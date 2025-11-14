@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
+    
+}
+
+.contenedorUnico {
+    margin-top: 50px;
+    margin-left: 35%;
+    margin-right: 35%;
+    margin-bottom: 50px;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    border: 5px black solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+
+}
