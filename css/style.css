@@ -4,7 +4,20 @@
     box-sizing: border-box;
     
 }
-
+.tituloindex{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.tituloDashboard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
 .contenedorUnico {
     margin-top: 50px;
     margin-left: 35%;

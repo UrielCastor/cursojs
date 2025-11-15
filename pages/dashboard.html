@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- BS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- JS -->
+    <script defer src="../js/main.js"></script>
+    <title>Proyecto Credito-Dashboard</title>
+</head>
+
+<body>
+
+    <h1 class="tituloDashboard" id="tituloUsuario">Proyecto Credito</h1>
+
+    <section class="contenedorUnico">
+
+        <div class="">
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#simularcre" type="button">Simular
+                Credito</button>
+            <button class="btn btn-danger" id="solicitarCredito" data-bs-toggle="modal" data-bs-target="#sacarcred"
+                type="button">Solicitar Credito</button>
+            <button class="btn btn-success" id="creditosPedidos" data-bs-toggle="modal" data-bs-target="#modalVisualizacion"
+                type="button">Creditos Solicitados</button>
+        </div>
+    </section>
+    <!-- Modal simulador de creditos-------------------------------------------------------------------------  -->
+    <section>
+        <div id="simuladorboton">
+            <div class="modal fade" id="simularcre" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Simular Prestamo</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row g-2">
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="cargaImporte"
+                                            placeholder="$00000000" value="">
+                                        <label for="floatingInputGrid">Monto a Solicitar</label>
+                                    </div>
+                                </div>
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="cargaMeses">
+                                            <option selected>Cuotas</option>
+                                            <option value="1">1</option>
+                                            <option value="6">6</option>
+                                            <option value="12">12</option>
+                                            <option value="24">24</option>
+                                            <option value="48">48</option>
+                                        </select>
+                                        <label for="floatingSelectGrid">Seleccione lascuotas</label>
+
+                                    </div>
+
+                                </div>
+                                <div id="cardSimulacion"></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="cerrarCimulador" class="btn btn-secondary"
+                                data-bs-dismiss="modal">Cerrar</button>
+                            <button type="button" id="simularCredito" class="btn btn-primary">Simular</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--Fin Modal simulador de creditos-------------------------------------------------------------------------  -->
+    <!-- Modal Solicitud de creditos-------------------------------------------------------------------------  -->
+    <section>
+        <div id="simuladormodal">
+
+            <div class="modal fade" id="sacarcred" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+                aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Solicitar Prestamo</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" id="cardpeticion">
+                            <div class="row g-2">
+                                <div class="col-md">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="cargaImporteCargado"
+                                            placeholder="$00000000" value="">
+                                        <label for="floatingInputGrid">Monto a Solicitar</label>
+                                    </div>
+                                </div>
+                                <div class="row g-2">
+                                    <div class="col-md">
+                                        <div class="form-floating">
+                                            <input type="date" class="form-control" id="cargaFechaCargado"
+                                                placeholder="$00000000" value="date">
+                                            <label for="floatingInputGrid">Fecha</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md">
+                                        <div class="form-floating">
+                                            <select class="form-select" id="cargaMesesCargado">
+                                                <option selected>Cuotas</option>
+                                                <option value="1">1</option>
+                                                <option value="6">6</option>
+                                                <option value="12">12</option>
+                                                <option value="24">24</option>
+                                                <option value="48">48</option>
+                                            </select>
+                                            <label for="floatingSelectGrid">Seleccione lascuotas</label>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="cerrarSolicitud" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cerrar</button>
+                                <button type="button" id="solicitarboton" class="btn btn-primary">Solicitar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!--Fin Modal Solicitud de creditos-------------------------------------------------------------------------  -->
+    <!-- Modal Visualizacion de creditos-------------------------------------------------------------------------  -->
+    <div class="modal fade" id="modalVisualizacion" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="creditosSolicitadosPor">Creditos Solicitados</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="creditosOtorgados">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+      <!--Fin Modal Visualizacion de creditos-------------------------------------------------------------------------  -->  
+    <!-- Scritp JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+        integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
