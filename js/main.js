@@ -67,13 +67,13 @@ class CreditoSolicitar {
     static id = 0;
     constructor(importe, meses, fecha,) {
         this.id = ++CreditoSolicitar.id
-            this.importe = importe,
+        this.importe = importe,
             this.meses = meses,
             this.fecha = fecha
     }
 }
 //se crea el array vacio y la funcion para cargar el credito y guardarlo en localhost
-const creditoSacado =JSON.parse(localStorage.getItem("creditoSacado")) || []
+const creditoSacado = JSON.parse(localStorage.getItem("creditoSacado")) || []
 const cargarCreditoSacado = () => {
     let cargaImporte = document.getElementById("cargaImporteCargado")
     let cargarMeses = document.getElementById("cargaMesesCargado")
@@ -82,6 +82,7 @@ const cargarCreditoSacado = () => {
     creditoSacado.push(CreditoSolicita)
     const creditoJSon = JSON.stringify(creditoSacado)
     localStorage.setItem("creditoSacado", creditoJSon)
+
     // se declara un onclick con una funcion para restablecer los input y el card   
     const cerrarSolicitud = document.getElementById("cerrarSolicitud")
     cerrarSolicitud.onclick = () => {
@@ -90,31 +91,60 @@ const cargarCreditoSacado = () => {
         cargarMeses.value = "Cuotas"
         cargarFecha.value = "date"
     }
+    let alertas = document.getElementById("alertaOtorgamiento")
+    let alert = document.createElement("div")
+    alert.className = "alert alert-success"
+    alert.innerHTML = ` Felicidades Su Credito Fue Otorgado.`
+    alertas.appendChild(alert)
 }
 //se llama la funcion con el evento onclick
 sacarCredito.onclick = () => {
     cargarCreditoSacado()
+
 }
 /////////////////////////// fin Solicitud de prestamos///////////////////////////////////////////////////////////////////////////
 ///////////////////////////Vizualisacion de creditos///////////////////////////////////////////////////////////////////////////
 const modalVisualizacion = document.getElementById("creditosOtorgados")
 const creditosAprovados = JSON.parse(localStorage.getItem("creditoSacado"))
-console.log(creditosAprovados)
-
 const tituloModal = document.getElementById("creditosSolicitadosPor")
 tituloModal.innerText = "Creditos Solicitados Por :" + nombreUsuario;
-
 let mostrarCOtorgado = document.getElementById("creditosOtorgados")
-    mostrarCOtorgado.innerHTML = ""
-    creditosAprovados.forEach(creditosAprovados => {
-        let card = document.createElement("div")
-        card.className = "card"
-        card.innerHTML = `
-                    <h2>Simulacion de Prestamo Personal</h2>
-                    <h4 class="card-title">Monto Solicitado $: ${creditosAprovados.importe}</h4>
-                    <h4 class="card-title">Pago Mensual $: ${creditosAprovados.importe / creditosAprovados.meses}</h4>
-                    <h4>Meses : ${creditosAprovados.meses}</h4>
+mostrarCOtorgado.innerHTML = ""
+creditosAprovados.forEach(creditosAprovados => {
+    let card = document.createElement("div")
+    card.className = "card"
+    card.innerHTML = `
+                    <h2>Prestamos Personales</h2>
+                    <h5 class="card-title">Monto Solicitado $: ${creditosAprovados.importe}</h5>
+                    <h5 class="card-title">Pago Mensual $: ${creditosAprovados.importe / creditosAprovados.meses}</h5>
+                    <h5>Meses : ${creditosAprovados.meses}</h5>
                     <h5>Fecha de Emision : ${creditosAprovados.fecha}</h5>`
-        mostrarCOtorgado.appendChild(card)
+    mostrarCOtorgado.appendChild(card)
 
-    })
+})
+/////////////////////////// fin Vizualisacion de prestamos///////////////////////////////////////////////////////////////////////////
+/////////////////////////// Borrado de prestamos///////////////////////////////////////////////////////////////////////////
+const borrarPrestamo = document.getElementById("borrarPrestamo")
+borrarPrestamo.onclick = () => {
+    localStorage.removeItem("creditoSacado")
+}
+///////////////////////////Fin Borrado de prestamos///////////////////////////////////////////////////////////////////////////
+/////////////////////////// Busqueda de prestamos///////////////////////////////////////////////////////////////////////////
+let inputbuscar = document.getElementById("inputbuscar")
+inputbuscar.onchange = () => {
+    const busqueda = creditosAprovados.filter(creditosAprovado => creditosAprovado.importe === inputbuscar.value)
+let mostrarCOtorgado = document.getElementById("buscrcreditos")
+mostrarCOtorgado.innerHTML = ""
+busqueda.forEach(creditosAprovados => {
+    let card = document.createElement("div")
+    card.className = "card"
+    card.innerHTML = `
+                    <h2>Prestamos Personales</h2>
+                    <h5 class="card-title">Monto Solicitado $: ${creditosAprovados.importe}</h5>
+                    <h5 class="card-title">Pago Mensual $: ${creditosAprovados.importe / creditosAprovados.meses}</h5>
+                    <h5>Meses : ${creditosAprovados.meses}</h5>
+                    <h5>Fecha de Emision : ${creditosAprovados.fecha}</h5>`
+    mostrarCOtorgado.appendChild(card)
+})
+}
+/////////////////////////// Fin busqeuda de prestamos///////////////////////////////////////////////////////////////////////////
