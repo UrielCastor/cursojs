@@ -114,9 +114,9 @@ creditosAprovados.forEach(creditosAprovados => {
     let card = document.createElement("div")
     card.className = "card"
     card.innerHTML = `
-                    <h2>Prestamos Personales</h2>
                     <h5 class="card-title">Monto Solicitado $: ${creditosAprovados.importe}</h5>
-                    <h5 class="card-title">Pago Mensual $: ${creditosAprovados.importe / creditosAprovados.meses}</h5>
+                   <h5 class="card-title">Pago Mensual $: ${creditosAprovados.importe / creditosAprovados.meses + creditosAprovados.importe / creditosAprovados.meses }</h5>
+                    <h5 class="card-title">Intereses: ${creditosAprovados.importe / creditosAprovados.meses/100}% Mensuales</h5>
                     <h5>Meses : ${creditosAprovados.meses}</h5>
                     <h5>Fecha de Emision : ${creditosAprovados.fecha}</h5>`
     mostrarCOtorgado.appendChild(card)
@@ -141,7 +141,8 @@ busqueda.forEach(creditosAprovados => {
     card.innerHTML = `
                     <h2>Prestamos Personales</h2>
                     <h5 class="card-title">Monto Solicitado $: ${creditosAprovados.importe}</h5>
-                    <h5 class="card-title">Pago Mensual $: ${creditosAprovados.importe / creditosAprovados.meses}</h5>
+                   <h5 class="card-title">Pago Mensual $: ${creditosAprovados.importe / creditosAprovados.meses + creditosAprovados.importe / creditosAprovados.meses }</h5>
+                    <h5 class="card-title">Intereses: ${creditosAprovados.importe / creditosAprovados.meses/100}% Mensuales</h5>
                     <h5>Meses : ${creditosAprovados.meses}</h5>
                     <h5>Fecha de Emision : ${creditosAprovados.fecha}</h5>`
     mostrarCOtorgado.appendChild(card)
